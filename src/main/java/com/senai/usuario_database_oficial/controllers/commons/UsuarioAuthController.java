@@ -1,0 +1,42 @@
+package com.senai.usuario_database_oficial.controllers.commons;
+
+import com.senai.usuario_database_oficial.dtos.commons.AutenticarUsuarioDto;
+import com.senai.usuario_database_oficial.dtos.commons.MensagemDto;
+import com.senai.usuario_database_oficial.services.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/login")
+public class UsuarioAuthController {
+
+    @Autowired
+    UsuarioService service;
+
+    @GetMapping
+    public String obterLogin(Model model){
+
+        AutenticarUsuarioDto autenticarUsuarioDto = new AutenticarUsuarioDto();
+        model.addAttribute("autenticarUsuarioDto", autenticarUsuarioDto);
+
+        return "login";
+    }
+
+    @PostMapping
+    public String autenticarUsuario(@ModelAttribute("autenticarUsuarioDto") AutenticarUsuarioDto dados){
+
+        //System.out.println(dados.getLogin() + " " + dados.getSenha());
+
+        MensagemDto mensagemDto = service.autenticarUsuario2(dados);
+
+        if(mensagemDto.getSucesso()){
+            return "redirect:/home?sucesso";
+        }
+        return "redirect:/login?erro";
+    }
+}
