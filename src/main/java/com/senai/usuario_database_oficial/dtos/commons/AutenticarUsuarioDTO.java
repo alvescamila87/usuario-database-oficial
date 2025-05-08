@@ -3,16 +3,16 @@ package com.senai.usuario_database_oficial.dtos.commons;
 import lombok.Data;
 
 @Data
-public class AutenticarUsuarioDto {
+public class AutenticarUsuarioDTO {
 
     private String login;
 
     private String senha;
 
-    public AutenticarUsuarioDto() {
+    public AutenticarUsuarioDTO() {
     }
 
-    public AutenticarUsuarioDto(String senha, String login) {
+    public AutenticarUsuarioDTO(String senha, String login) {
         this.senha = senha;
         this.login = login;
     }

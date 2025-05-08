@@ -1,6 +1,6 @@
 package com.senai.usuario_database_oficial.controllers.commons;
 
-import com.senai.usuario_database_oficial.dtos.commons.AutenticarUsuarioDto;
+import com.senai.usuario_database_oficial.dtos.commons.AutenticarUsuarioDTO;
 import com.senai.usuario_database_oficial.dtos.commons.MensagemDto;
 import com.senai.usuario_database_oficial.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +21,14 @@ public class UsuarioAuthController {
     @GetMapping
     public String obterLogin(Model model){
 
-        AutenticarUsuarioDto autenticarUsuarioDto = new AutenticarUsuarioDto();
+        AutenticarUsuarioDTO autenticarUsuarioDto = new AutenticarUsuarioDTO();
         model.addAttribute("autenticarUsuarioDto", autenticarUsuarioDto);
 
         return "login";
     }
 
     @PostMapping
-    public String autenticarUsuario(@ModelAttribute("autenticarUsuarioDto") AutenticarUsuarioDto dados){
+    public String autenticarUsuario(@ModelAttribute("autenticarUsuarioDto") AutenticarUsuarioDTO dados){
 
         //System.out.println(dados.getLogin() + " " + dados.getSenha());
 

@@ -1,6 +1,6 @@
 package com.senai.usuario_database_oficial.services;
 
-import com.senai.usuario_database_oficial.dtos.commons.AutenticarUsuarioDto;
+import com.senai.usuario_database_oficial.dtos.commons.AutenticarUsuarioDTO;
 import com.senai.usuario_database_oficial.dtos.commons.MensagemDto;
 import com.senai.usuario_database_oficial.dtos.usuario.ConsultaUsuarioDto;
 import com.senai.usuario_database_oficial.dtos.usuario.RequisicaoUsuarioDto;
@@ -159,7 +159,7 @@ public class UsuarioService {
         return mensagem;
     }
 
-    public MensagemDto autenticarUsuario2(AutenticarUsuarioDto dados){
+    public MensagemDto autenticarUsuario2(AutenticarUsuarioDTO dados){
         MensagemDto mensagem = new MensagemDto();
 
         Optional<UsuarioModel> usuarioOptional = repository.findByLogin(dados.getLogin());
