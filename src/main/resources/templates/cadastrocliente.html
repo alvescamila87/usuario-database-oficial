@@ -20,10 +20,10 @@
         <a class="nav-link" th:href="@{/home#}">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/addclient}">New Client</a>
+        <a class="nav-link" th:href="@{/cadastro-cliente}">Novo cliente</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/clientlist}">Client list</a>
+        <a class="nav-link" th:href="@{/lista-cliente}">Lista de clientes</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" th:href="@{/userlist}">User List</a>
@@ -45,10 +45,10 @@
 <div class="container mt-5 d-flex justify-content-center">
   <div class="card shadow w-50">
     <div class="card-header bg-primary text-white text-center">
-      <h5>Add product</h5>
+      <h5>Add client</h5>
     </div>
     <div class="card-body">
-      <form th:action="@{/addclient}" method="post" th:object="${clienteRequestDTO}">
+      <form th:action="@{/cadastro-cliente}" method="post" th:object="${clienteRequestDTO}">
 
         <div class="mb-3">
           <label for="cliente_name" class="form-label">Client name</label>
@@ -78,7 +78,7 @@
 
         <div class="text-center mt-4">
           <button type="submit" class="btn btn-success">Save</button>
-          <a th:href="@{/clientlist}" class="btn btn-secondary ms-2">Cancel</a>
+          <a th:href="@{/lista-cliente}" class="btn btn-secondary ms-2">Cancel</a>
         </div>
 
         <div th:if="${param.error}" class="alert alert-danger" role="alert">

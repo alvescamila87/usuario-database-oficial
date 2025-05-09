@@ -1,5 +1,5 @@
 
-// Adicione um ouvinte de eventos aos botões de exclusão
+//EXCLUSÃO DO USUARIO - LISTA
 document.querySelectorAll('.excluir-usuario').forEach(function(button) {
     button.addEventListener('click',
     function() {
@@ -39,7 +39,7 @@ document.querySelectorAll('.excluir-usuario').forEach(function(button) {
 });
 
 
-// Adicione um ouvinte de eventos aos botões de exclusão
+//EXCLUSÃO DO PRODUTO - LISTA
 document.querySelectorAll('.excluir-produto').forEach(function(button) {
     button.addEventListener('click',
     function() {

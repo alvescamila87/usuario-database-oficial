@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/view-client")
+@RequestMapping("/visualizar-cliente")
 public class VisualizarCadastroClienteController {
 
     @Autowired
     ClienteService service;
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public String obterVisualizarCadastroCliente(@PathVariable Long id, Model model) {
 
         ClienteDTO visualizarClienteDTO = service.buscarClientePorId(id);
 
-        model.addAttribute("viewClientDTO", visualizarClienteDTO);
+        model.addAttribute("visualizarClienteDTO", visualizarClienteDTO);
 
-        return "viewclient";
+        return "visualizarcadastrocliente";
     }
 }

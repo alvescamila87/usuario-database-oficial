@@ -23,7 +23,7 @@
         <a class="nav-link" th:href="@{/addclient}">New Client</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/clientlist}">Client list</a>
+        <a class="nav-link" th:href="@{/listacliente}">Lista de clientes</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" th:href="@{/userlist}">User List</a>
@@ -48,7 +48,7 @@
       <h5>Add product</h5>
     </div>
     <div class="card-body">
-      <form th:action="@{/view-client}" method="post" th:object="${viewClientDTO}">
+      <form th:action="@{/visualizar-cliente}" method="post" th:object="${visualizarClienteDTO}">
 
         <div class="mb-3">
           <label for="cliente_id" class="form-label">ID</label>
@@ -58,7 +58,7 @@
         <div class="mb-3">
           <label class="form-label">Status</label>
           <input type="text" class="form-control"
-                 th:value="${viewClientDTO.ativo ? 'Ativo' : 'Inativo'}" disabled />
+                 th:value="${visualizarClienteDTO.ativo ? 'Ativo' : 'Inativo'}" disabled />
         </div>
 
         <div class="mb-3">
@@ -76,7 +76,7 @@
 <!--          <input th:field="*{dataNascimento}" type="date" class="form-control" id="cliente_birthday" name="cliente_birthday" disabled />-->
 <!--          <span th:text="${#temporals.format(viewClientDTO.dataNascimento, 'dd/MM/yyyy')}"></span>-->
           <label class="form-label">Birthday</label>
-          <input th:value="${#temporals.format(viewClientDTO.dataNascimento, 'dd/MM/yyyy')}" type="text" class="form-control" disabled>
+          <input th:value="${#temporals.format(visualizarClienteDTO.dataNascimento, 'dd/MM/yyyy')}" type="text" class="form-control" disabled>
         </div>
 
         <div class="mb-3">

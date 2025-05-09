@@ -1,6 +1,6 @@
 package com.senai.usuario_database_oficial.controllers.cliente;
 
-import com.senai.userapiv2.services.ClienteService;
+import com.senai.usuario_database_oficial.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

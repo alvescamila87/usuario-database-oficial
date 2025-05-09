@@ -23,7 +23,7 @@
         <a class="nav-link" th:href="@{/addclient}">New Client</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/clientlist}">Client list</a>
+        <a class="nav-link" th:href="@{/lista-cliente}">Lista de clientes</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" th:href="@{/userlist}">User List</a>
@@ -43,7 +43,7 @@
 
 <!-- Content -->
 <div class="container mt-3">
-  <h1 class="mb-4 text-center">Client List</h1>
+  <h1 class="mb-4 text-center">Lista de clientes</h1>
 
   <div class="table-responsive">
 
@@ -63,12 +63,12 @@
       </tr>
       </thead>
       <tbody>
-      <tr th:each="client : ${clienteListaDTO}" data-client-id="${client.id}">
+      <tr th:each="client : ${listaClienteDTO}" data-client-id="${client.id}">
         <td>
           <div class="d-flex justify-content-center gap-2">
-            <a th:href="@{'/view-client/' + ${client.id}}" class="btn btn-warning">View</a>
-            <a th:href="@{'/update-client/' + ${client.id}}" class="btn btn-primary">Update</a>
-            <a th:data-client-id="${client.id}" class="delete-client btn btn-danger">Delete</a>
+            <a th:href="@{'/visualizar-cliente/' + ${client.id}}" class="btn btn-warning">Visualizar</a>
+            <a th:href="@{'/atualizar-cliente/' + ${client.id}}" class="btn btn-primary">Editar</a>
+            <a th:data-client-id="${client.id}" class="delete-client btn btn-danger">Excluir</a>
           </div>
         </td>
         <td th:text="${client.id}"></td>

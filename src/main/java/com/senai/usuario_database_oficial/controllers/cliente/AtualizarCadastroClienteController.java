@@ -1,7 +1,7 @@
 package com.senai.usuario_database_oficial.controllers.cliente;
 
-import com.senai.userapiv2.dtos.cliente.ClienteDTO;
-import com.senai.userapiv2.services.ClienteService;
+import com.senai.usuario_database_oficial.dtos.cliente.ClienteDTO;
+import com.senai.usuario_database_oficial.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
