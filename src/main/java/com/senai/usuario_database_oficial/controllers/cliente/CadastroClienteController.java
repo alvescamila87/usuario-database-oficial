@@ -32,7 +32,7 @@ public class CadastroClienteController {
         Boolean resultado = service.cadastrarCliente(clienteRequestDTO);
 
         if(!resultado) {
-            return "redirect:/lista-cliente?error";
+            return "redirect:/lista-cliente?erro";
         }
 
         return "redirect:/lista-cliente";

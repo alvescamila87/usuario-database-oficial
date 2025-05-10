@@ -20,14 +20,20 @@
             <li class="nav-item active">
                 <a class="nav-link" th:href="@{/home}">Home</a>
             </li>
+            <!--      <li class="nav-item">-->
+            <!--        <a class="nav-link" th:href="@{/cadastro-usuario}">Novo usuário</a>-->
+            <!--      </li>-->
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/cadastro-usuario}">Novo usuário</a>
+                <a class="nav-link" th:href="@{/cadastro-cliente}">Novo cliente</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/cadastro-produto}">Novo produto</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/lista-usuario}">Listar usuários</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/lista-cliente}">Listar clientes</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/lista-produto}">Listar produtos</a>
@@ -57,6 +63,15 @@
 <div class="container mt-3">
     <h1 class="mb-4 text-center">Lista de produtos</h1>
 
+    <!-- url passando parametro -> "localhost:8080/login?erro"  -->
+    <div th:if="${param.erro}" class="alert alert-danger" role="alert">
+        <span class="mensagem">Erro ao realizar cadastro do produto!</span>
+    </div>
+
+    <div th:if="${param.sucesso}" class="alert alert-info" role="alert">
+        <span class="mensagem">Produto cadastrado/alterado com sucesso!</span>
+    </div>
+
     <div class="table-responsive">
         <table class="table table-bordered table-hover align-middle text-center">
             <thead class="table-light">
@@ -84,14 +99,7 @@
             </tr>
             </tbody>
 
-            <!-- url passando parametro -> "localhost:8080/login?erro"  -->
-            <div th:if="${param.erro}" class="alert alert-danger" role="alert">
-                <span class="mensagem">Erro ao realizar cadastro do produto!</span>
-            </div>
 
-            <div th:if="${param.sucesso}" class="alert alert-info" role="alert">
-                <span class="mensagem">Produto cadastrado/alterado com sucesso!</span>
-            </div>
 
         </table>
     </div>

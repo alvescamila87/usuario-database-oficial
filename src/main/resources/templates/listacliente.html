@@ -17,22 +17,26 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" th:href="@{/home#}">Home</a>
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/home}">Home</a>
+      </li>
+      <!--      <li class="nav-item">-->
+      <!--        <a class="nav-link" th:href="@{/cadastro-usuario}">Novo usuário</a>-->
+      <!--      </li>-->
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/cadastro-cliente}">Novo cliente</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/addclient}">New Client</a>
+        <a class="nav-link" th:href="@{/cadastro-produto}">Novo produto</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/lista-cliente}">Lista de clientes</a>
+        <a class="nav-link" th:href="@{/lista-usuario}">Listar usuários</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/userlist}">User List</a>
+        <a class="nav-link" th:href="@{/lista-cliente}">Listar clientes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/produto}">Add product</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" th:href="@{/produtos}">Product list</a>
+        <a class="nav-link" th:href="@{/lista-produto}">Listar produtos</a>
       </li>
     </ul>
   </div>
@@ -40,26 +44,29 @@
     <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
   </form>
 </nav>
-
 <!-- Content -->
 <div class="container mt-3">
   <h1 class="mb-4 text-center">Lista de clientes</h1>
 
   <div class="table-responsive">
 
-    <div th:if="${param.error}" class="alert alert-danger" role="alert">
-      <span class="mensagem">Error to update client product</span>
+    <div th:if="${param.erro}" class="alert alert-danger" role="alert">
+      <span class="mensagem">Erro ao realizar cadastro de cliente</span>
+    </div>
+
+    <div th:if="${param.sucesso}" class="alert alert-info" role="alert">
+      <span class="mensagem">Cliente cadastrado/alterado com sucesso!</span>
     </div>
 
     <table class="table table-bordered table-hover align-middle text-center">
       <thead class="table-light">
       <tr>
-        <th scope="col">Actions</th>
+        <th scope="col">Ações</th>
         <th scope="col">ID</th>
-        <th scope="col">Active</th>
-        <th scope="col">Name</th>
-        <th scope="col">Birthday</th>
-        <th scope="col">Email</th>
+        <th scope="col">Ativo</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Data nascimento</th>
+        <th scope="col">E-mail</th>
       </tr>
       </thead>
       <tbody>
