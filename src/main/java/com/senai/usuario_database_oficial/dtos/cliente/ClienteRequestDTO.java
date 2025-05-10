@@ -1,7 +1,7 @@
 package com.senai.usuario_database_oficial.dtos.cliente;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.senai.userapiv2.models.ClienteModel;
+import com.senai.usuario_database_oficial.models.ClienteModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
