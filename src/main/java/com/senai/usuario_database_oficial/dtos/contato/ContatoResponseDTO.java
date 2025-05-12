@@ -1,0 +1,33 @@
+package com.senai.usuario_database_oficial.dtos.contato;
+
+import com.senai.usuario_database_oficial.models.ContatoModel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@RequiredArgsConstructor
+public class ContatoResponseDTO {
+
+    private Long id;
+    private String nome;
+    private String telefone;
+    private String email;
+    private String logradouro;
+    private String numero;
+    private String complemento;
+    private String bairro;
+    private String cidade;
+    private String uf;
+
+    public static ContatoResponseDTO of(ContatoModel model) {
+        ContatoResponseDTO contatoResponseDTO = new ContatoResponseDTO();
+        contatoResponseDTO.setId(model.getId());
+        contatoResponseDTO.setNome(model.getNome());
+        contatoResponseDTO.setEmail(model.getEmail());
+        contatoResponseDTO.setLogradouro(model.getEndereco().getLogradouro());
+
+        return contatoResponseDTO;
+    }
+}
