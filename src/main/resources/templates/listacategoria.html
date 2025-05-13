@@ -53,7 +53,7 @@
                     <div class="d-flex justify-content-center gap-2">
                         <a th:href="@{'/visualizar-categoria/' + ${categoria.id}}" class="btn btn-secondary">Visualizar</a>
                         <a th:href="@{'/atualizar-categoria/' + ${categoria.id}}" class="btn btn-primary">Editar</a>
-                        <a th:data-categoria-id="${categoria.id}" class="excluir-categoria btn btn-danger">Excluir</a>
+                        <a th:data-category-id="${categoria.id}" class="excluir-categoria btn btn-danger">Excluir</a>
                     </div>
                 </td>
                 <td th:text="${categoria.id}"></td>
