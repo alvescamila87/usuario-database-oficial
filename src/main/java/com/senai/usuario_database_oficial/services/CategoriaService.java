@@ -1,5 +1,6 @@
 package com.senai.usuario_database_oficial.services;
 
+import com.senai.usuario_database_oficial.dtos.categoria.CategoriaDTO;
 import com.senai.usuario_database_oficial.dtos.categoria.CategoriaListaDTO;
 import com.senai.usuario_database_oficial.dtos.categoria.CategoriaRequestDTO;
 import com.senai.usuario_database_oficial.exceptions.InvalidOperationException;
@@ -8,7 +9,6 @@ import com.senai.usuario_database_oficial.repositories.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -49,6 +49,46 @@ public class CategoriaService {
         repository.save(categoriaModel);
 
         return true;
+    }
+
+    public Boolean atualizarCategoria(Long id, CategoriaRequestDTO categoriaRequestDTO) {
+        Optional<CategoriaModel> categoriaModel = repository.findById(id);
+
+        if(categoriaModel.isEmpty()) {
+            throw new InvalidOperationException("Categoria não encontrda");
+        }
+
+        Boolean resultado = validarDupliciadadeNome(categoriaRequestDTO.getNome());
+
+        if(resultado) {
+            throw new InvalidOperationException("Nome de categoria já cadastrado.");
+        }
+
+        CategoriaModel atualizarCategoria = new CategoriaModel();
+        atualizarCategoria.setNome(categoriaRequestDTO.getNome());
+
+        return true;
+    }
+
+    public boolean deletarCategoria(Long id) {
+        Optional<CategoriaModel> categoriaModel = repository.findById(id);
+
+        if(categoriaModel.isEmpty()) {
+            throw new InvalidOperationException("Categoria não encontrada");
+        }
+
+        repository.delete(categoriaModel.get());
+        return true;
+    }
+
+    public CategoriaDTO buscarCategoriaPorId(Long id) {
+        Optional<CategoriaModel> categoriaModel = repository.findById(id);
+
+        if(categoriaModel.isEmpty()) {
+            throw new InvalidOperationException("Categoria não encontrada");
+        }
+
+        return CategoriaDTO.of(categoriaModel.get());
     }
 
     protected Boolean validarDupliciadadeNome(String nome){
