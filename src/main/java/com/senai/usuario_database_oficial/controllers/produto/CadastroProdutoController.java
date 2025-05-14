@@ -1,6 +1,5 @@
 package com.senai.usuario_database_oficial.controllers.produto;
 
-import com.senai.usuario_database_oficial.dtos.produto.ProdutoDto;
 import com.senai.usuario_database_oficial.dtos.produto.ProdutoRequisicaoDto;
 import com.senai.usuario_database_oficial.exceptions.InvalidOperationException;
 import com.senai.usuario_database_oficial.services.ProdutoService;
