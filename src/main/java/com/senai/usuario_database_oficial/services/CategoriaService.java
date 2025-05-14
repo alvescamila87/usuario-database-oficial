@@ -64,9 +64,10 @@ public class CategoriaService {
             throw new InvalidOperationException("Nome de categoria já cadastrado.");
         }
 
-        CategoriaModel atualizarCategoria = new CategoriaModel();
+        CategoriaModel atualizarCategoria = categoriaModel.get();
         atualizarCategoria.setNome(categoriaRequestDTO.getNome());
 
+        repository.save(atualizarCategoria);
         return true;
     }
 
