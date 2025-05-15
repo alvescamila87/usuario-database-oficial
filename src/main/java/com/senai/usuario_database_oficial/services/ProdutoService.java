@@ -4,7 +4,9 @@ import com.senai.usuario_database_oficial.dtos.produto.ProdutoDto;
 import com.senai.usuario_database_oficial.dtos.produto.ProdutoListaDto;
 import com.senai.usuario_database_oficial.dtos.produto.ProdutoRequisicaoDto;
 import com.senai.usuario_database_oficial.exceptions.InvalidOperationException;
+import com.senai.usuario_database_oficial.models.CategoriaModel;
 import com.senai.usuario_database_oficial.models.ProdutoModel;
+import com.senai.usuario_database_oficial.repositories.CategoriaRepository;
 import com.senai.usuario_database_oficial.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,125 +21,124 @@ public class ProdutoService {
     @Autowired
     ProdutoRepository repository;
 
-    public List<ProdutoListaDto> listarProdutos(){
+    @Autowired
+    CategoriaRepository categoriaRepository;
+
+    public List<ProdutoListaDto> listarProdutos() {
 
         List<ProdutoListaDto> listaProdutoDto = new ArrayList<>();
         List<ProdutoModel> listaProdutoModel = repository.findAll();
 
-        for(ProdutoModel produtoModel : listaProdutoModel){
+        for (ProdutoModel produtoModel : listaProdutoModel) {
             ProdutoListaDto produtoDto = new ProdutoListaDto();
             produtoDto.setId(produtoModel.getId());
             produtoDto.setNome(produtoModel.getNome());
             produtoDto.setPreco(produtoModel.getPreco());
             produtoDto.setQuantidadeEstoque(produtoModel.getQuantidadeEstoque());
-            produtoDto.setCategoria(produtoModel.getCategoria().getNome());
+            produtoDto.setCategoria(produtoModel.getCategoria().getId());
 
             listaProdutoDto.add(produtoDto);
         }
         return listaProdutoDto;
     }
 
-    public Boolean cadastrarProduto(ProdutoRequisicaoDto produtoDto) {
+    public void cadastrarProduto(ProdutoRequisicaoDto produtoDto) {
 
-        Boolean resultadoProduto =  validaDuplicidadeNomeProduto(produtoDto.getNome());
+        Optional<CategoriaModel> categoriaModel = categoriaRepository.findById(produtoDto.getCategoria());
 
-        if(resultadoProduto) {
+        if (categoriaModel.isEmpty()) {
+            throw new InvalidOperationException("Categoria não encontrada");
+        }
+
+        Boolean resultadoProduto = validaDuplicidadeNomeProduto(produtoDto.getNome());
+
+        if (resultadoProduto) {
             throw new InvalidOperationException("Produto já cadastrado com esse nome.");
         }
 
         //Preço não pode ser zerado nem negativo
-        if(produtoDto.getPreco() <= 0) {
+        if (produtoDto.getPreco() <= 0) {
             throw new InvalidOperationException("Produto não pode ter 'preço' zerado e/ou negativo.");
         }
 
         //Quantidade não pode ser zerada nem negativa
-        if(produtoDto.getQuantidadeEstoque() < 0) {
+        if (produtoDto.getQuantidadeEstoque() < 0) {
             throw new InvalidOperationException("Produto não pode ter 'quantidade de estoque' negativo.");
         }
 
         //Nome não pode ser em branco
-        if(produtoDto.getNome().isBlank() || produtoDto.getNome().isEmpty()) {
+        if (produtoDto.getNome().isBlank() || produtoDto.getNome().isEmpty()) {
             throw new InvalidOperationException("Nome é obrigatório");
         }
 
-        if(!resultadoProduto) {
-            ProdutoModel produtoModel = new ProdutoModel();
-            produtoModel.setNome(produtoDto.getNome());
-            produtoModel.setDescricao(produtoDto.getDescricao());
-            produtoModel.setPreco(produtoDto.getPreco());
-            produtoModel.setQuantidadeEstoque(produtoDto.getQuantidadeEstoque());
+        ProdutoModel produtoModel = new ProdutoModel();
+        produtoModel.setNome(produtoDto.getNome());
+        produtoModel.setDescricao(produtoDto.getDescricao());
+        produtoModel.setPreco(produtoDto.getPreco());
+        produtoModel.setQuantidadeEstoque(produtoDto.getQuantidadeEstoque());
+        produtoModel.setCategoria(categoriaModel.get());
 
-            repository.save(produtoModel);
-
-            return true;
-        }
-
-        return false;
+        repository.save(produtoModel);
     }
 
-    public ProdutoDto obterProdutoPorId(Long id){
+    public ProdutoDto obterProdutoPorId(Long id) {
 
         Optional<ProdutoModel> produtoModel = repository.findById(id);
 
-        if(produtoModel.isEmpty()){
+        if (produtoModel.isEmpty()) {
             return new ProdutoDto();
         }
 
         return ProdutoDto.of(produtoModel.get());
     }
 
-    public Boolean atualizarProduto(Long id, ProdutoDto produtoDto){
+    public void atualizarProduto(Long id, ProdutoDto produtoDto) {
 
         Optional<ProdutoModel> buscarProdutoPeloId = repository.findById(id);
-        
+
         Optional<ProdutoModel> buscarProdutoPeloNome = repository.findByNome(produtoDto.getNome());
 
-        if(buscarProdutoPeloId.isEmpty()){
+        if (buscarProdutoPeloId.isEmpty()) {
             throw new InvalidOperationException("Produto não encontrado.");
             //return false;
         }
 
         // atualizar para um nome que já existe (carro -> carro + ID diferente)
-        if(buscarProdutoPeloNome.isPresent() && !buscarProdutoPeloNome.get().getId().equals(produtoDto.getId())) {
+        if (buscarProdutoPeloNome.isPresent() && !buscarProdutoPeloNome.get().getId().equals(produtoDto.getId())) {
             throw new InvalidOperationException("Produto já cadastrado com esse nome.");
         }
 
         //Preço não pode ser zerado nem negativo
-        if(produtoDto.getPreco() <= 0) {
+        if (produtoDto.getPreco() <= 0) {
             throw new InvalidOperationException("Produto não pode ter 'preço' zerado e/ou negativo.");
         }
 
         //Quantidade não pode ser zerada nem negativa
-        if(produtoDto.getQuantidadeEstoque() < 0) {
+        if (produtoDto.getQuantidadeEstoque() < 0) {
             throw new InvalidOperationException("Produto não pode ter 'quantidade de estoque' negativo.");
         }
 
         //Nome não pode ser em branco
-        if(produtoDto.getNome().isBlank() || produtoDto.getNome().isEmpty()) {
+        if (produtoDto.getNome().isBlank() || produtoDto.getNome().isEmpty()) {
             throw new InvalidOperationException("Nome é obrigatório");
         }
 
         //Atualizar para um nome que NÃO existe OU se for a situação de um nome já existente, mas de mesmo ID
-        if(buscarProdutoPeloId.isPresent()) {
-            ProdutoModel produtoModel = buscarProdutoPeloId.get();
-            produtoModel.setId(produtoDto.getId());
-            produtoModel.setNome(produtoDto.getNome());
-            produtoModel.setDescricao(produtoDto.getDescricao());
-            produtoModel.setPreco(produtoDto.getPreco());
-            produtoModel.setQuantidadeEstoque(produtoDto.getQuantidadeEstoque());
+        ProdutoModel produtoModel = buscarProdutoPeloId.get();
+        produtoModel.setId(produtoDto.getId());
+        produtoModel.setNome(produtoDto.getNome());
+        produtoModel.setDescricao(produtoDto.getDescricao());
+        produtoModel.setPreco(produtoDto.getPreco());
+        produtoModel.setQuantidadeEstoque(produtoDto.getQuantidadeEstoque());
 
-            repository.save(produtoModel);
-            return true;
-        }
-
-        return false;
+        repository.save(produtoModel);
     }
 
-    public Boolean deletarProduto(Long id){
+    public Boolean deletarProduto(Long id) {
 
         Optional<ProdutoModel> produtoModel = repository.findById(id);
 
-        if(produtoModel.isEmpty()){
+        if (produtoModel.isEmpty()) {
             return false;
         }
 
@@ -149,7 +150,7 @@ public class ProdutoService {
 
         Optional<ProdutoModel> produtoModel = repository.findByNome(nomeProduto);
 
-        if(produtoModel.isPresent()) {
+        if (produtoModel.isPresent()) {
             return true;
         }
 

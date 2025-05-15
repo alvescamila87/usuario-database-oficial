@@ -14,7 +14,7 @@ public class ProdutoRequisicaoDto {
     private String descricao;
     private Double preco;
     private Integer quantidadeEstoque;
-    private String categoria;
+    private Long categoria;
 
     public static ProdutoRequisicaoDto of(ProdutoModel model){
         ProdutoRequisicaoDto produto = new ProdutoRequisicaoDto();
@@ -22,7 +22,7 @@ public class ProdutoRequisicaoDto {
         produto.setDescricao(model.getDescricao());
         produto.setPreco(model.getPreco());
         produto.setQuantidadeEstoque(model.getQuantidadeEstoque());
-        produto.setCategoria(model.getCategoria().getNome());
+        produto.setCategoria(model.getCategoria().getId());
 
         return produto;
     }
