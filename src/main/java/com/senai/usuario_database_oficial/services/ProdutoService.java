@@ -30,6 +30,7 @@ public class ProdutoService {
             produtoDto.setNome(produtoModel.getNome());
             produtoDto.setPreco(produtoModel.getPreco());
             produtoDto.setQuantidadeEstoque(produtoModel.getQuantidadeEstoque());
+            produtoDto.setCategoria(produtoModel.getCategoria().getNome());
 
             listaProdutoDto.add(produtoDto);
         }

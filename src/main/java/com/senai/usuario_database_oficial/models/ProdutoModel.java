@@ -29,6 +29,10 @@ public class ProdutoModel {
 
     @Column(name = "quantidade_estoque", nullable = false)
     private Integer quantidadeEstoque;
+
+    @ManyToOne
+    @JoinColumn(name = "categoria_id", referencedColumnName = "id")
+    private CategoriaModel categoria;
 //
 //    public ProdutoModel(Long id, String nome, String descricao, Double preco, Integer quantidadeEstoque) {
 //        setId(id);
