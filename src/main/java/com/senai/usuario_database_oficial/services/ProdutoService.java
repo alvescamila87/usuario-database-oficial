@@ -35,7 +35,7 @@ public class ProdutoService {
             produtoDto.setNome(produtoModel.getNome());
             produtoDto.setPreco(produtoModel.getPreco());
             produtoDto.setQuantidadeEstoque(produtoModel.getQuantidadeEstoque());
-            produtoDto.setCategoria(produtoModel.getCategoria().getId());
+            produtoDto.setCategoria(produtoModel.getCategoria().getNome());
 
             listaProdutoDto.add(produtoDto);
         }
@@ -44,9 +44,9 @@ public class ProdutoService {
 
     public void cadastrarProduto(ProdutoRequisicaoDto produtoDto) {
 
-        Optional<CategoriaModel> categoriaModel = categoriaRepository.findById(produtoDto.getCategoria());
+        Optional<CategoriaModel> categoriaModelOptional = categoriaRepository.findById(produtoDto.getCategoria());
 
-        if (categoriaModel.isEmpty()) {
+        if (categoriaModelOptional.isEmpty()) {
             throw new InvalidOperationException("Categoria não encontrada");
         }
 
@@ -76,7 +76,7 @@ public class ProdutoService {
         produtoModel.setDescricao(produtoDto.getDescricao());
         produtoModel.setPreco(produtoDto.getPreco());
         produtoModel.setQuantidadeEstoque(produtoDto.getQuantidadeEstoque());
-        produtoModel.setCategoria(categoriaModel.get());
+        produtoModel.setCategoria(categoriaModelOptional.get());
 
         repository.save(produtoModel);
     }

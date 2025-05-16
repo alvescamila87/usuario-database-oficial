@@ -14,7 +14,7 @@ public class ProdutoListaDto {
     private String nome;
     private Double preco;
     private Integer quantidadeEstoque;
-    private Long categoria;
+    private String categoria;
 
     public static ProdutoListaDto of(ProdutoModel produto){
         ProdutoListaDto produtoListaDto = new ProdutoListaDto();

@@ -15,7 +15,7 @@ public class ProdutoRespostaDto {
     private String descricao;
     private Double preco;
     private Integer quantidadeEstoque;
-    private Long categoria;
+    private String categoria;
 
     public static ProdutoRespostaDto of(ProdutoModel produto){
         ProdutoRespostaDto produtoRespostaDto = new ProdutoRespostaDto();
@@ -25,7 +25,7 @@ public class ProdutoRespostaDto {
         produtoRespostaDto.setDescricao(produto.getDescricao());
         produtoRespostaDto.setPreco(produto.getPreco());
         produtoRespostaDto.setQuantidadeEstoque(produto.getQuantidadeEstoque());
-        produtoRespostaDto.setCategoria(produto.getCategoria().getId());
+        produtoRespostaDto.setCategoria(produto.getCategoria().getNome());
 
         return produtoRespostaDto;
     }
