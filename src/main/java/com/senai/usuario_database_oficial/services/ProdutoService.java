@@ -44,7 +44,7 @@ public class ProdutoService {
 
     public void cadastrarProduto(ProdutoRequisicaoDto produtoDto) {
 
-        Optional<CategoriaModel> categoriaModelOptional = categoriaRepository.findById(produtoDto.getCategoria());
+        Optional<CategoriaModel> categoriaModelOptional = categoriaRepository.findById(produtoDto.getCategoriaId());
 
         if (categoriaModelOptional.isEmpty()) {
             throw new InvalidOperationException("Categoria não encontrada");
@@ -66,10 +66,10 @@ public class ProdutoService {
             throw new InvalidOperationException("Produto não pode ter 'quantidade de estoque' negativo.");
         }
 
-        //Nome não pode ser em branco
+       // Nome não pode ser em branco
         if (produtoDto.getNome().isBlank() || produtoDto.getNome().isEmpty()) {
             throw new InvalidOperationException("Nome é obrigatório");
-        }
+        }//
 
         ProdutoModel produtoModel = new ProdutoModel();
         produtoModel.setNome(produtoDto.getNome());

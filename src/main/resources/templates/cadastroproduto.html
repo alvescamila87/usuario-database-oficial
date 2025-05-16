@@ -26,6 +26,13 @@
                 <!--                </div>-->
 
                 <div class="mb-3">
+                    <label for="produto_nome" class="form-label">Produto <span class="text-danger">*</span></label>
+                    <input th:field="*{nome}" type="text" class="form-control" id="produto_nome" name="nome"
+                           placeholder="Nome do produto" required/>
+                    <!--                    <input th:field="*{nome}" type="text" class="form-control" id="produto_nome" name="nome" placeholder="Nome do produto" required/>-->
+                </div>
+
+                <div class="mb-3">
                     <label for="categoria_list-items" class="form-label">Categoria de produto <span class="text-danger">*</span></label>
                     <div class="input-group">
                         <select class="form-select" th:field="*{categoriaId}" id="categoria_list-items" name="categoria_list-items"
@@ -40,14 +47,6 @@
                             <i class="fas fa-chevron-down"></i>
                         </span>
                     </div>
-                </div>
-
-
-                <div class="mb-3">
-                    <label for="produto_nome" class="form-label">Produto <span class="text-danger">*</span></label>
-                    <input th:field="*{nome}" type="text" class="form-control" id="produto_nome" name="nome"
-                           placeholder="Nome do produto" required/>
-                    <!--                    <input th:field="*{nome}" type="text" class="form-control" id="produto_nome" name="nome" placeholder="Nome do produto" required/>-->
                 </div>
 
                 <div class="mb-3">

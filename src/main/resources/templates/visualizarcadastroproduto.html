@@ -31,6 +31,21 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="categoria_list" class="form-label">Categoria </label>
+                    <div class="input-group">
+                        <select class="form-select" th:field="*{categoriaId}" id="categoria_list" name="categoria_list" disabled>
+                            <option th:each="categoria : ${listaCategoriaDTO}"
+                                    th:value="${categoria.id}"
+                                    th:text="${categoria.nome}">
+                            </option>
+                        </select>
+                        <span class="input-group-text">
+                             <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
                     <label for="produto_descricao" class="form-label">Descrição</label>
                     <textarea th:field="*{descricao}" class="form-control" id="produto_descricao" name="descricao" rows="3" disabled></textarea>
                 </div>
