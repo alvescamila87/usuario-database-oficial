@@ -25,20 +25,25 @@ public class CadastroProdutoController {
     CategoriaService categoriaService;
 
     @GetMapping
-    public String obterProduto(Model model){
+    public String obterProduto(Model model, RedirectAttributes redirectAttributes) {
 
-        ProdutoRequisicaoDto produtoRequisicaoDto = new ProdutoRequisicaoDto();
-        model.addAttribute("produtoRequisicaoDto", produtoRequisicaoDto);
+        try {
+            ProdutoRequisicaoDto produtoRequisicaoDto = new ProdutoRequisicaoDto();
+            model.addAttribute("produtoRequisicaoDto", produtoRequisicaoDto);
 
-        List<CategoriaListaDTO> listaCategoriasDTO = categoriaService.listarCategorias();
-        model.addAttribute("listaCategoriasDTO", listaCategoriasDTO);
+            List<CategoriaListaDTO> listaCategoriaDTO = categoriaService.listarCategorias();
+            model.addAttribute("listaCategoriaDTO", listaCategoriaDTO);
 
-        return "cadastroproduto";
+            return "cadastroproduto";
+        } catch (InvalidOperationException exception) {
+            redirectAttributes.addFlashAttribute("erro", exception.getMessage());
+            return "redirect:/lista-produto";
+        }
     }
 
 
     @PostMapping
-    public String realizarCadastro(@ModelAttribute("produtoRequisicaoDto") ProdutoRequisicaoDto produtoRequisicaoDto, RedirectAttributes redirectAttributes){
+    public String realizarCadastro(@ModelAttribute("produtoRequisicaoDto") ProdutoRequisicaoDto produtoRequisicaoDto, RedirectAttributes redirectAttributes) {
 
         try {
             service.cadastrarProduto(produtoRequisicaoDto);

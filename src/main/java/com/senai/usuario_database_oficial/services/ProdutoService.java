@@ -47,7 +47,7 @@ public class ProdutoService {
         Optional<CategoriaModel> categoriaModelOptional = categoriaRepository.findById(produtoDto.getCategoriaId());
 
         if (categoriaModelOptional.isEmpty()) {
-            throw new InvalidOperationException("Categoria não encontrada");
+            throw new InvalidOperationException("Nenhuma categoria cadastrada.");
         }
 
         Boolean resultadoProduto = validaDuplicidadeNomeProduto(produtoDto.getNome());
@@ -90,14 +90,6 @@ public class ProdutoService {
         }
 
         return ProdutoDto.of(produtoModel.get());
-//        ProdutoDto produtoDto = new ProdutoDto();
-//        produtoDto.setId(produtoModel.get().getId());
-//        produtoDto.setNome(produtoModel.get().getNome());
-//        produtoDto.setDescricao(produtoModel.get().getDescricao());
-//        produtoDto.setPreco(produtoModel.get().getPreco());
-//        produtoDto.setQuantidadeEstoque(produtoModel.get().getQuantidadeEstoque());
-//        produtoDto.setCategoriaId(produtoModel.get().getCategoria().getId());
-//        return produtoDto;
     }
 
     public void atualizarProduto(Long id, ProdutoDto produtoDto) {
@@ -105,6 +97,13 @@ public class ProdutoService {
         Optional<ProdutoModel> buscarProdutoPeloId = repository.findById(id);
 
         Optional<ProdutoModel> buscarProdutoPeloNome = repository.findByNome(produtoDto.getNome());
+
+        Optional<CategoriaModel> categoriaModelOptional = categoriaRepository.findById(produtoDto.getId());
+
+        if (categoriaModelOptional.isEmpty()) {
+            throw new InvalidOperationException("Nenhuma categoria cadastrada.");
+            //return false;
+        }
 
         if (buscarProdutoPeloId.isEmpty()) {
             throw new InvalidOperationException("Produto não encontrado.");
@@ -138,6 +137,7 @@ public class ProdutoService {
         produtoModel.setDescricao(produtoDto.getDescricao());
         produtoModel.setPreco(produtoDto.getPreco());
         produtoModel.setQuantidadeEstoque(produtoDto.getQuantidadeEstoque());
+        produtoModel.setCategoria(categoriaModelOptional.get());
 
         repository.save(produtoModel);
     }
