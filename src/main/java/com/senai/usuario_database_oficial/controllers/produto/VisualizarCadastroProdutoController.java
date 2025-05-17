@@ -27,8 +27,8 @@ public class VisualizarCadastroProdutoController {
         ProdutoDto visualizarProdutoDto = service.obterProdutoPorId(id);
         model.addAttribute("visualizarProdutoDto", visualizarProdutoDto);
 
-        List<CategoriaListaDTO> listaCategoriasDTO = categoriaService.listarCategorias();
-        model.addAttribute("listaCategoriasDTO", listaCategoriasDTO);
+        List<CategoriaListaDTO> listaCategoriaDTO = categoriaService.listarCategorias();
+        model.addAttribute("listaCategoriaDTO", listaCategoriaDTO);
 
         return "visualizarcadastroproduto";
     }

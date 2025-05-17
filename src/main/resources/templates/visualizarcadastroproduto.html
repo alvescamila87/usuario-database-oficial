@@ -9,7 +9,7 @@
 <body class="bg-light">
 
 <!-- Navigation bar -->
-<div th:insert="navbar :: navigation" class="nav-wrapper"></div>
+<div th:insert="~{navbar :: navigation}" class="nav-wrapper"></div>
 
 <!-- Corpo do conteúdo -->
 <div class="container mt-5 d-flex justify-content-center">
@@ -18,7 +18,7 @@
             <h5>Visualizar produto</h5>
         </div>
         <div class="card-body">
-            <form th:action="@{'/visualizar-produto/' + ${visualizarProdutoDto.id}}" method="post" th:object="${visualizarProdutoDto}">
+            <form th:action="@{'/visualizar-produto/' + ${visualizarProdutoDto.id}}" method="get" th:object="${visualizarProdutoDto}">
 
                 <div class="mb-3">
                     <label for="produto_id" class="form-label">ID</label>
@@ -31,18 +31,13 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="categoria_list" class="form-label">Categoria </label>
-                    <div class="input-group">
-                        <select class="form-select" th:field="*{categoriaId}" id="categoria_list" name="categoria_list" disabled>
-                            <option th:each="categoria : ${listaCategoriaDTO}"
-                                    th:value="${categoria.id}"
-                                    th:text="${categoria.nome}">
-                            </option>
-                        </select>
-                        <span class="input-group-text">
-                             <i class="fas fa-chevron-down"></i>
-                        </span>
-                    </div>
+                    <label for="categoria" class="form-label">Categoria </label>
+                    <select class="form-select" th:field="*{categoriaId}" id="categoria" name="categoria" disabled>
+                        <option th:each="categoria : ${listaCategoriaDTO}"
+                                th:value="${categoria.id}"
+                                th:text="${categoria.nome}">
+                        </option>
+                    </select>
                 </div>
 
                 <div class="mb-3">

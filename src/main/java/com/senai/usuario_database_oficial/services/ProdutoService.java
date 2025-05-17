@@ -76,7 +76,7 @@ public class ProdutoService {
         produtoModel.setDescricao(produtoDto.getDescricao());
         produtoModel.setPreco(produtoDto.getPreco());
         produtoModel.setQuantidadeEstoque(produtoDto.getQuantidadeEstoque());
-        produtoModel.setCategoria(categoriaModelOptional.get());
+        produtoModel.setCategoria(produtoModel.getCategoria());
 
         repository.save(produtoModel);
     }
@@ -90,6 +90,14 @@ public class ProdutoService {
         }
 
         return ProdutoDto.of(produtoModel.get());
+//        ProdutoDto produtoDto = new ProdutoDto();
+//        produtoDto.setId(produtoModel.get().getId());
+//        produtoDto.setNome(produtoModel.get().getNome());
+//        produtoDto.setDescricao(produtoModel.get().getDescricao());
+//        produtoDto.setPreco(produtoModel.get().getPreco());
+//        produtoDto.setQuantidadeEstoque(produtoModel.get().getQuantidadeEstoque());
+//        produtoDto.setCategoriaId(produtoModel.get().getCategoria().getId());
+//        return produtoDto;
     }
 
     public void atualizarProduto(Long id, ProdutoDto produtoDto) {
