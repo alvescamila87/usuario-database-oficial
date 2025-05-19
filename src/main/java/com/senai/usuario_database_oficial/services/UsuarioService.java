@@ -2,10 +2,7 @@ package com.senai.usuario_database_oficial.services;
 
 import com.senai.usuario_database_oficial.dtos.commons.AutenticarUsuarioDTO;
 import com.senai.usuario_database_oficial.dtos.commons.MensagemDto;
-import com.senai.usuario_database_oficial.dtos.usuario.ConsultaUsuarioDto;
-import com.senai.usuario_database_oficial.dtos.usuario.RequisicaoUsuarioDto;
-import com.senai.usuario_database_oficial.dtos.usuario.RespostaUsuarioDto;
-import com.senai.usuario_database_oficial.dtos.usuario.UsuarioAtualizarDto;
+import com.senai.usuario_database_oficial.dtos.usuario.*;
 import com.senai.usuario_database_oficial.models.UsuarioModel;
 import com.senai.usuario_database_oficial.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -187,5 +184,18 @@ public class UsuarioService {
         }
 
         return usuarioDTO.of(usuarioModelIdPesquisado.get());
+    }
+
+    public UsuarioSessaoDTO autenticarUsuario3(AutenticarUsuarioDTO dados){
+       UsuarioSessaoDTO usuarioSessaoDTO = new UsuarioSessaoDTO();
+
+        Optional<UsuarioModel> usuarioOptional = repository.findByLogin(dados.getLogin());
+
+        if(usuarioOptional.isPresent() && usuarioOptional.get().getSenha().equals(dados.getSenha())) {
+            usuarioSessaoDTO.setId(usuarioOptional.get().getId());
+            usuarioSessaoDTO.setNome(usuarioOptional.get().getNome());
+        }
+
+        return usuarioSessaoDTO;
     }
 }

@@ -1,4 +1,4 @@
-package com.senai.usuario_database_oficial.dtos.session;
+package com.senai.usuario_database_oficial.dtos.usuario;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

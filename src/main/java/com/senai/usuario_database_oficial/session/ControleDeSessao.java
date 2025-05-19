@@ -1,6 +1,6 @@
 package com.senai.usuario_database_oficial.session;
 
-import com.senai.usuario_database_oficial.dtos.session.UsuarioSessaoDTO;
+import com.senai.usuario_database_oficial.dtos.usuario.UsuarioSessaoDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 

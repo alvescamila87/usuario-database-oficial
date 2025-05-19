@@ -1,4 +1,4 @@
-package com.senai.usuario_database_oficial.models;
+package com.senai.usuario_database_oficial.models.contato.v1;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

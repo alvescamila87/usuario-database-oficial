@@ -1,4 +1,4 @@
-package com.senai.usuario_database_oficial.models;
+package com.senai.usuario_database_oficial.models.contato.v2;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,10 +24,9 @@ public class ContatoModel {
     @Column(name = "telefone", nullable = false)
     private String telefone;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name = "endereco_id", referencedColumnName = "id", nullable = false)
-    private EnderecoModel endereco;
+    private CidadeModel cidade;
+
 }

@@ -1,4 +1,4 @@
-package com.senai.usuario_database_oficial.dtos.contato;
+package com.senai.usuario_database_oficial.dtos.contato.v2;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
