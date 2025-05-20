@@ -1,5 +1,6 @@
-package com.senai.usuario_database_oficial.models.contato.v1;
+package com.senai.usuario_database_oficial.models;
 
+import com.senai.usuario_database_oficial.models.contato.v2.ContatoModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

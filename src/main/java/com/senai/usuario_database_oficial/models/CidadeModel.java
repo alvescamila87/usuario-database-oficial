@@ -1,4 +1,4 @@
-package com.senai.usuario_database_oficial.models.contato.v2;
+package com.senai.usuario_database_oficial.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,12 +7,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "estado")
+@Table(name = "cidade")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EstadoModel {
+public class CidadeModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +21,7 @@ public class EstadoModel {
     @Column(name = "nome", nullable = false)
     private String nome;
 
-    @Column(name = "sigla", nullable = false, length = 2)
-    private String sigla;
+    @OneToMany
+    @JoinColumn(name = "estado_id", referencedColumnName = "id")
+    private EstadoModel estado;
 }

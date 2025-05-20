@@ -1,6 +1,6 @@
 package com.senai.usuario_database_oficial.dtos.contato.v1;
 
-import com.senai.usuario_database_oficial.models.contato.v1.ContatoModel;
+import com.senai.usuario_database_oficial.models.contato.v2.ContatoModel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
