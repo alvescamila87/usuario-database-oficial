@@ -2,8 +2,11 @@ package com.senai.usuario_database_oficial.controllers.categoria;
 
 import com.senai.usuario_database_oficial.dtos.categoria.CategoriaDTO;
 import com.senai.usuario_database_oficial.dtos.categoria.CategoriaRequestDTO;
+import com.senai.usuario_database_oficial.dtos.usuario.UsuarioSessaoDTO;
 import com.senai.usuario_database_oficial.exceptions.InvalidOperationException;
 import com.senai.usuario_database_oficial.services.CategoriaService;
+import com.senai.usuario_database_oficial.session.ControleDeSessao;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +21,13 @@ public class AtualizarCadastroCategoriaController {
     CategoriaService service;
 
     @GetMapping("/{id}")
-    public  String obterAtualizarCategoria(@PathVariable Long id, Model model) {
+    public  String obterAtualizarCategoria(@PathVariable Long id, Model model, HttpServletRequest httpServletRequest) {
+
+        UsuarioSessaoDTO usuarioSessaoDTO = ControleDeSessao.obter(httpServletRequest);
+        if(usuarioSessaoDTO.getId() == 0L) {
+            return "redirect:/login";
+        }
+
         CategoriaDTO atualizarCategoriaDTO = service.buscarCategoriaPorId(id);
         model.addAttribute("atualizarCategoriaDTO", atualizarCategoriaDTO);
 

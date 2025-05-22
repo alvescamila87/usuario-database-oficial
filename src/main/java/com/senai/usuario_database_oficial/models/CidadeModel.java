@@ -21,7 +21,7 @@ public class CidadeModel {
     @Column(name = "nome", nullable = false)
     private String nome;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "estado_id", referencedColumnName = "id")
     private EstadoModel estado;
 }
