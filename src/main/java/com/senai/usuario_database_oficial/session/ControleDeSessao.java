@@ -11,4 +11,22 @@ public class ControleDeSessao {
         httpSession.setAttribute("codigoIdUsuario", usuarioSessaoDTO.getId());
         httpSession.setAttribute("nomeUsuario", usuarioSessaoDTO.getNome());
     }
+
+    public static UsuarioSessaoDTO obter(HttpServletRequest httpServletRequest){
+        HttpSession httpSession = httpServletRequest.getSession(false);
+        UsuarioSessaoDTO usuarioSessaoDTO = new UsuarioSessaoDTO();
+        if(httpSession != null) {
+            usuarioSessaoDTO.setId((long) httpSession.getAttribute("codigoIdUsuario"));
+            usuarioSessaoDTO.setNome((String) httpSession.getAttribute("nomeUsuario"));
+        }
+
+        return usuarioSessaoDTO;
+    }
+
+    public static void encerrar(HttpServletRequest httpServletRequest) {
+        HttpSession httpSession = httpServletRequest.getSession(false);
+        if(httpSession != null) {
+            httpSession.invalidate();
+        }
+    }
 }
