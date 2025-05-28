@@ -2,6 +2,7 @@ package com.senai.usuario_database_oficial.services;
 
 import com.senai.usuario_database_oficial.dtos.estado.EstadoDTO;
 import com.senai.usuario_database_oficial.dtos.estado.EstadoListaDTO;
+import com.senai.usuario_database_oficial.dtos.estado.EstadoRequestDTO;
 import com.senai.usuario_database_oficial.exceptions.InvalidOperationException;
 import com.senai.usuario_database_oficial.models.EstadoModel;
 import com.senai.usuario_database_oficial.repositories.EstadoRepository;
@@ -44,5 +45,9 @@ public class EstadoService {
         }
 
         return EstadoDTO.of(estadoModelOptional.get());
+    }
+
+    public void adicionarEstado(EstadoRequestDTO estadoRequestDTO) {
+
     }
 }
