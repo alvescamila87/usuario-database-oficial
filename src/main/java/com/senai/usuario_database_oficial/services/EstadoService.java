@@ -9,7 +9,6 @@ import com.senai.usuario_database_oficial.repositories.EstadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -48,6 +47,10 @@ public class EstadoService {
     }
 
     public void adicionarEstado(EstadoRequestDTO estadoRequestDTO) {
+        EstadoModel estadoModel = new EstadoModel();
+        estadoModel.setNome(estadoRequestDTO.getNome());
+        estadoModel.setSigla(estadoRequestDTO.getSigla());
 
+        repository.save(estadoModel);
     }
 }
