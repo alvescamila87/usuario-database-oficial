@@ -1,6 +1,6 @@
 package com.senai.usuario_database_oficial.dtos.contato.v2;
 
-import com.senai.usuario_database_oficial.models.contato.v2.ContatoModel;
+import com.senai.usuario_database_oficial.models.contato.v2.ContatoModelV2;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -21,7 +21,7 @@ public class ContatoResponseDTO {
     private String cidade;
     private String uf;
 
-    public static ContatoResponseDTO of(ContatoModel model) {
+    public static ContatoResponseDTO of(ContatoModelV2 model) {
         ContatoResponseDTO contatoResponseDTO = new ContatoResponseDTO();
         contatoResponseDTO.setId(model.getId());
         contatoResponseDTO.setNome(model.getNome());

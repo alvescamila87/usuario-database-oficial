@@ -1,6 +1,6 @@
 package com.senai.usuario_database_oficial.models;
 
-import com.senai.usuario_database_oficial.models.contato.v2.ContatoModel;
+import com.senai.usuario_database_oficial.models.contato.v2.ContatoModelV2;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -45,5 +45,5 @@ public class EnderecoModel {
     private String uf;
 
     @OneToMany(mappedBy = "endereco")
-    private List<ContatoModel> listaContatos = new ArrayList<>();
+    private List<ContatoModelV2> listaContatos = new ArrayList<>();
 }

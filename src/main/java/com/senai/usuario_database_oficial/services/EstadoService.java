@@ -53,4 +53,35 @@ public class EstadoService {
 
         repository.save(estadoModel);
     }
+
+    public void atualizarEstado(Long id, EstadoRequestDTO estadoRequestDTO) {
+        EstadoRequestDTO atualizarEstadoDTO = new EstadoRequestDTO();
+
+        Optional<EstadoModel> estadoModelOptional = repository.findById(id);
+
+        if(estadoModelOptional.isEmpty()) {
+            throw new InvalidOperationException("Estado não encontrado");
+        }
+
+        if(estadoModelOptional.get().getSigla().equalsIgnoreCase(estadoRequestDTO.getSigla())) {
+            throw new InvalidOperationException("Estado já cadastrado");
+        }
+
+        EstadoModel estadoModel = estadoModelOptional.get();
+        estadoModel.setNome(estadoRequestDTO.getNome());
+        estadoModel.setSigla(estadoRequestDTO.getSigla());
+
+        repository.save(estadoModel);
+    }
+
+    public Boolean deletarEstado(Long id) {
+        Optional<EstadoModel> estadoModelOptional = repository.findById(id);
+
+        if(estadoModelOptional.isPresent()) {
+            repository.delete(estadoModelOptional.get());
+            return true;
+        };
+
+        return false;
+    }
 }

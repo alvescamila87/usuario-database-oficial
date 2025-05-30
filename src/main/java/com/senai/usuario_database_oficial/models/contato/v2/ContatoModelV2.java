@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "contato")
+@Table(name = "contato_v2")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContatoModel {
+public class ContatoModelV2 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
