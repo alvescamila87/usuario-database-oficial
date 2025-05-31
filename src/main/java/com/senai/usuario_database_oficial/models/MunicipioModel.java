@@ -21,4 +21,7 @@ public class MunicipioModel {
     @Column(name = "nome", nullable = false)
     private String nome;
 
+    @ManyToOne
+    @JoinColumn(name = "estado_id", referencedColumnName = "id")
+    private EstadoModel estado;
 }
