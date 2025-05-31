@@ -16,9 +16,14 @@ public class CategoriaController {
     CategoriaService service;
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarCategoria(@PathVariable Long id) {
-        service.deletarCategoria(id);
-        return null;
+    public ResponseEntity<Boolean> deletarCategoria(@PathVariable Long id){
+
+        boolean retorno = service.deletarCategoria(id);
+
+        if(retorno){
+            return ResponseEntity.ok().body(true);
+        }
+        return ResponseEntity.status(404).body(false);
     }
 
 }

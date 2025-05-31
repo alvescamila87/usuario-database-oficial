@@ -71,7 +71,7 @@ public class CategoriaService {
         return true;
     }
 
-    public void deletarCategoria(Long id) {
+    public boolean deletarCategoria(Long id) {
         Optional<CategoriaModel> categoriaModel = repository.findById(id);
 
         if(categoriaModel.isEmpty()) {
@@ -79,6 +79,7 @@ public class CategoriaService {
         }
 
         repository.delete(categoriaModel.get());
+        return true;
     }
 
     public CategoriaDTO buscarCategoriaPorId(Long id) {

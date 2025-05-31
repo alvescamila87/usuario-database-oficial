@@ -15,9 +15,14 @@ public class EstadoController {
     @Autowired
     EstadoService service;
 
-    @DeleteMapping("{/id}")
-    public ResponseEntity<Void> deletarEstado(@PathVariable Long id) {
-        service.deletarEstado(id);
-        return ResponseEntity.noContent().build();
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> deletarEstado(@PathVariable Long id){
+
+        Boolean retorno = service.deletarEstado(id);
+
+        if(retorno){
+            return ResponseEntity.ok().body(true);
+        }
+        return ResponseEntity.status(404).body(false);
     }
 }
