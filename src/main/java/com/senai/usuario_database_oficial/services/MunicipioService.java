@@ -1,6 +1,8 @@
 package com.senai.usuario_database_oficial.services;
 
+import com.senai.usuario_database_oficial.dtos.municipio.MunicipioDTO;
 import com.senai.usuario_database_oficial.dtos.municipio.MunicipioListaDTO;
+import com.senai.usuario_database_oficial.exceptions.InvalidOperationException;
 import com.senai.usuario_database_oficial.models.MunicipioModel;
 import com.senai.usuario_database_oficial.repositories.EstadoRepository;
 import com.senai.usuario_database_oficial.repositories.MunicipioRepository;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MunicipioService {
@@ -34,5 +37,15 @@ public class MunicipioService {
         }
 
         return listaMunicipiosDTO;
+    }
+
+    public MunicipioDTO obterMunicipioPorId(Long id) {
+        Optional<MunicipioModel> municipioModel = repository.findById(id);
+
+        if(municipioModel.isEmpty()) {
+            throw new InvalidOperationException("Município não encontrado");
+        }
+
+        return MunicipioDTO.of(municipioModel.get());
     }
 }
