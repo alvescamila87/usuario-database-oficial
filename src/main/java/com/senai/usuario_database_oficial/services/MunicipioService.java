@@ -49,6 +49,10 @@ public class MunicipioService {
         return MunicipioDTO.of(municipioModel.get());
     }
 
+    public void cadastrarMunicipio(MunicipioDTO municipioDTO) {
+        //lógica
+    }
+
     public void adicionarMunicipio(MunicipioDTO municipioDTO) {
 
     }
