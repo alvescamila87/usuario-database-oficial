@@ -53,7 +53,11 @@ public class MunicipioService {
         //lógica
     }
 
-    public void adicionarMunicipio(MunicipioDTO municipioDTO) {
+    public void atualizarMunicipio(Long id, MunicipioDTO municipioDTO) {
+
+    }
+
+    public void deletarMunicipio(Long id) {
 
     }
 }
