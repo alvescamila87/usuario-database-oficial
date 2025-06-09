@@ -55,6 +55,8 @@ public class MunicipioService {
 
     public void atualizarMunicipio(Long id, MunicipioDTO municipioDTO) {
 
+        Optional<MunicipioModel> municipioModelOptional = repository.findById(id);
+
     }
 
     public void deletarMunicipio(Long id) {
