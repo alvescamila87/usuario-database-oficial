@@ -57,6 +57,11 @@ public class MunicipioService {
 
         Optional<MunicipioModel> municipioModelOptional = repository.findById(id);
 
+        if(municipioModelOptional.isEmpty()) {
+
+            throw new InvalidOperationException("Município não encontrado");
+        }
+
     }
 
     public void deletarMunicipio(Long id) {
