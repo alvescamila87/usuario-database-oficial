@@ -58,9 +58,16 @@ public class MunicipioService {
         Optional<MunicipioModel> municipioModelOptional = repository.findById(id);
 
         if(municipioModelOptional.isEmpty()) {
-
             throw new InvalidOperationException("Município não encontrado");
         }
+
+        if(municipioModelOptional.get().getNome().equals(municipioDTO.getNome()) && municipioModelOptional.get().getEstado().equals(municipioDTO.getUf())) {
+            throw new InvalidOperationException("Município já cadastrado para essa UF.");
+        }
+
+        MunicipioModel municipioModel = municipioModelOptional.get();
+        municipioModel.setNome(municipioDTO.getNome());
+        municipioModel.setEstado(municipioDTO.getUf());
 
     }
 
