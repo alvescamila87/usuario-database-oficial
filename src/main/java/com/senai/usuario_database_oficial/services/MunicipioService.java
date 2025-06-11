@@ -50,7 +50,10 @@ public class MunicipioService {
     }
 
     public void cadastrarMunicipio(MunicipioDTO municipioDTO) {
-        //lógica
+        MunicipioModel municipioModel = new MunicipioModel();
+        municipioModel.setNome(municipioDTO.getNome());
+        municipioModel.getEstado(municipioModel.getEstado().getNome());
+        repository.save(municipioModel);
     }
 
     public void atualizarMunicipio(Long id, MunicipioDTO municipioDTO) {
