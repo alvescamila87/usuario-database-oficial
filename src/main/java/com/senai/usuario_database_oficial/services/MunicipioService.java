@@ -50,7 +50,7 @@ public class MunicipioService {
     }
 
     public void cadastrarMunicipio(MunicipioDTO municipioDTO) {
-        //lógica
+        MunicipioModel municipioModel = new MunicipioModel();
     }
 
     public void atualizarMunicipio(Long id, MunicipioDTO municipioDTO) {
