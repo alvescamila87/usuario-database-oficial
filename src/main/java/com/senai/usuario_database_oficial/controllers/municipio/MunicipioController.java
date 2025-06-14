@@ -18,8 +18,8 @@ public class MunicipioController {
     @DeleteMapping("{/id}")
     public ResponseEntity<Void> deleteMunicipio(@PathVariable Long id) {
 
+        service.deletarMunicipio(id);
+
         return ResponseEntity.noContent().build();
     }
-
-
 }
