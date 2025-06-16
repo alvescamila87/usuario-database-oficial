@@ -22,7 +22,7 @@ public class MunicipioService {
     @Autowired
     EstadoRepository estadoRepository;
 
-    public List<MunicipioListaDTO> listarMunicipior() {
+    public List<MunicipioListaDTO> listarMunicipios() {
         List<MunicipioListaDTO> listaMunicipiosDTO = new ArrayList<>();
 
         List<MunicipioModel> listaMunicipiosModel = repository.findAll();
@@ -52,7 +52,7 @@ public class MunicipioService {
     public void cadastrarMunicipio(MunicipioDTO municipioDTO) {
         MunicipioModel municipioModel = new MunicipioModel();
         municipioModel.setNome(municipioDTO.getNome());
-        municipioModel.getEstado(municipioModel.getEstado().getNome());
+        //municipioModel.getEstado(municipioModel.getEstado().getNome());
         repository.save(municipioModel);
     }
 
@@ -70,7 +70,7 @@ public class MunicipioService {
 
         MunicipioModel municipioModel = municipioModelOptional.get();
         municipioModel.setNome(municipioDTO.getNome());
-        municipioModel.setEstado(municipioDTO.getUf());
+        //municipioModel.setEstado(municipioDTO.getUf());
 
         repository.save(municipioModel);
     }

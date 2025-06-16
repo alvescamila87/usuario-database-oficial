@@ -22,6 +22,5 @@ public class VisualizarCadastroMunicipioController {
         model.addAttribute("visualizarMunicipioDTO", visualizarMunicipioDTO);
 
         return "visualizarcadastromunicipio";
-
     }
 }
