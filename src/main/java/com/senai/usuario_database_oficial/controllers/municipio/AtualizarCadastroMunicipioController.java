@@ -1,6 +1,5 @@
 package com.senai.usuario_database_oficial.controllers.municipio;
 
-import com.senai.usuario_database_oficial.dtos.estado.EstadoRequestDTO;
 import com.senai.usuario_database_oficial.dtos.municipio.MunicipioDTO;
 import com.senai.usuario_database_oficial.exceptions.InvalidOperationException;
 import com.senai.usuario_database_oficial.services.MunicipioService;
@@ -29,13 +28,13 @@ public class AtualizarCadastroMunicipioController {
     }
 
     @PostMapping("/{id}")
-    public String realizarAtualizacaoEstado(@PathVariable Long id, @ModelAttribute("atualizarEstadoDTO") EstadoRequestDTO estadoRequestDTO, RedirectAttributes redirectAttributes) {
+    public String realizarAtualizacaoMunicipio(@PathVariable Long id, @ModelAttribute("atualizarEstadoDTO") MunicipioDTO municipioDTO, RedirectAttributes redirectAttributes) {
       try {
-          //service.atualizarEstado(id, estadoRequestDTO);
-          return "redirect:/lista-estado?sucesso";
+          service.atualizarMunicipio(id, municipioDTO);
+          return "redirect:/lista-municipio?sucesso";
       } catch (InvalidOperationException exception) {
           redirectAttributes.addFlashAttribute("erro", exception.getMessage());
-          return "redirect:/atualizar-estado/" + id;
+          return "redirect:/atualizar-municipio/" + id;
       }
     }
 }
