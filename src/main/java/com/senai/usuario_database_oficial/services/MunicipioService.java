@@ -52,7 +52,7 @@ public class MunicipioService {
     public void cadastrarMunicipio(MunicipioDTO municipioDTO) {
         MunicipioModel municipioModel = new MunicipioModel();
         municipioModel.setNome(municipioDTO.getNome());
-        //municipioModel.getEstado(municipioModel.getEstado().getNome());
+        municipioModel.setEstado(municipioModel.getEstado());
         repository.save(municipioModel);
     }
 
