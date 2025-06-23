@@ -70,7 +70,7 @@ public class MunicipioService {
 
         MunicipioModel municipioModel = municipioModelOptional.get();
         municipioModel.setNome(municipioDTO.getNome());
-        //municipioModel.setEstado(municipioDTO.getUf());
+        municipioModel.setEstado(municipioModel.getEstado());
 
         repository.save(municipioModel);
     }
