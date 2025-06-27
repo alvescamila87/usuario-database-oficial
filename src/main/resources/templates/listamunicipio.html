@@ -55,22 +55,22 @@
             <tr>
                 <th scope="col">Ações</th>
                 <th scope="col">ID</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Sigla</th>
+                <th scope="col">Município</th>
+                <th scope="col">UF</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="estado : ${estadoListaDTO}">
                 <td>
                     <div class="d-flex justify-content-center gap-2">
-                        <a th:href="@{'/visualizar-estado/' + ${estado.id}}" class="btn btn-secondary">Visualizar</a>
-                        <a th:href="@{'/atualizar-estado/' + ${estado.id}}" class="btn btn-primary">Editar</a>
-                        <a th:data-state-id="${estadi.id}" class="delete-state btn btn-danger">Excluir</a>
+                        <a th:href="@{'/visualizar-municipio/' + ${municipio.id}}" class="btn btn-secondary">Visualizar</a>
+                        <a th:href="@{'/atualizar-municipio/' + ${municipio.id}}" class="btn btn-primary">Editar</a>
+                        <a th:data-state-id="${municipio.id}" class="delete-state btn btn-danger">Excluir</a>
                     </div>
                 </td>
-                <td th:text="${estado.id}"></td>
-                <td th:text="${estado.nome}"></td>
-                <td th:text="${estado.sigla}"></td>
+                <td th:text="${municipio.id}"></td>
+                <td th:text="${municipio.nome}"></td>
+                <td th:text="${municipio.sigla}"></td>
             </tr>
             </tbody>
 
