@@ -18,16 +18,16 @@
             <h5>Atualizar município</h5>
         </div>
         <div class="card-body">
-            <form th:action="@{'/atualizar-município/' + ${atualizarCategoriaDTO.id}}" method="post" th:object="${atualizarCategoriaDTO}">
+            <form th:action="@{'/atualizar-município/' + ${atualizarMunicipioDTO.id}}" method="post" th:object="${atualizarMunicipioDTO}">
 
                 <div class="mb-3">
-                    <label for="categoria_id" class="form-label">ID</label>
-                    <input th:field="*{id}" type="text" class="form-control" id="categoria_id" name="id" disabled />
+                    <label for="municipio_id" class="form-label">ID</label>
+                    <input th:field="*{id}" type="text" class="form-control" id="municipio_id" name="municipio_id" disabled />
                 </div>
 
                 <div class="mb-3">
-                    <label for="categoria_nome" class="form-label">Descrição</label>
-                    <input th:field="*{nome}" type="text" class="form-control" id="categoria_nome" name="nome" placeholder="Informe o nome da categoria"/>
+                    <label for="municipio_nome" class="form-label">Descrição</label>
+                    <input th:field="*{nome}" type="text" class="form-control" id="municipio_nome" name="municipio_nome" placeholder="Informe o nome do município"/>
 <!--                    <input th:field="*{nome}" type="text" class="form-control" id="produto_nome" name="nome" placeholder="Nome do produto" required/>-->
                 </div>
 
