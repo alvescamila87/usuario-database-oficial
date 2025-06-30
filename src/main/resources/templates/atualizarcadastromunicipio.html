@@ -26,10 +26,17 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="municipio_nome" class="form-label">Descrição</label>
+                    <label for="municipio_nome" class="form-label">Nome do município</label>
                     <input th:field="*{nome}" type="text" class="form-control" id="municipio_nome" name="municipio_nome" placeholder="Informe o nome do município"/>
 <!--                    <input th:field="*{nome}" type="text" class="form-control" id="produto_nome" name="nome" placeholder="Nome do produto" required/>-->
                 </div>
+
+                <div class="mb-3">
+                    <label for="municipio_uf" class="form-label">UF</label>
+                    <input th:field="*{nome}" type="text" class="form-control" id="municipio_uf" name="municipio_uf" placeholder="Informe a UF"/>
+                    <!--                    <input th:field="*{nome}" type="text" class="form-control" id="produto_nome" name="nome" placeholder="Nome do produto" required/>-->
+                </div>
+
 
                 <div class="text-center mt-4">
                     <button type="submit" class="btn btn-primary">Salvar</button>
@@ -37,7 +44,7 @@
                 </div>
 
                 <div th:if="${param.sucesso}" class="alert alert-info" role="alert">
-                    <span class="mensagem">Categoria atualizada com sucesso!</span>
+                    <span class="mensagem">Município atualizado com sucesso!</span>
                 </div>
 
                 <div th:if="${erro}" class="alert alert-danger" role="alert">
