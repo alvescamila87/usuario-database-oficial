@@ -21,13 +21,13 @@
             <form th:action="@{'/visualizar-município/' + ${visualizarMunicipioDTO.id}}" method="get" th:object="${visualizarMunicipioDTO}">
 
                 <div class="mb-3">
-                    <label for="estado_id" class="form-label">ID</label>
-                    <input th:field="*{id}" type="text" class="form-control" id="estado_id" name="estado_id" disabled />
+                    <label for="municipio_id" class="form-label">ID</label>
+                    <input th:field="*{id}" type="text" class="form-control" id="municipio_id" name="municipio_id" disabled />
                 </div>
 
                 <div class="mb-3">
-                    <label for="estado_nome" class="form-label">Nome</label>
-                    <input th:field="*{nome}" type="text" class="form-control" id="estado_nome" name="estado_nome" disabled />
+                    <label for="municipio_nome" class="form-label">Nome</label>
+                    <input th:field="*{nome}" type="text" class="form-control" id="municipio_nome" name="municipio_nome" disabled />
                 </div>
 
                 <div class="mb-3">
