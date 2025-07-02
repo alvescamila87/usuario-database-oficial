@@ -31,8 +31,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="estado_sigla" class="form-label">Sigla</label>
-                    <input th:field="*{sigla}" type="text" class="form-control" id="estado_sigla" name="estado_sigla" disabled />
+                    <label for="municipio_uf" class="form-label">Nome</label>
+                    <input th:field="*{uf}" type="text" class="form-control" id="municipio_uf" name="municipio_uf" disabled />
                 </div>
 
 
@@ -42,7 +42,7 @@
                 </div>
 
                 <div th:if="${param.sucesso}" class="alert alert-info" role="alert">
-                    <span class="mensagem">Estado visualizado com sucesso!</span>
+                    <span class="mensagem">Município visualizado com sucesso!</span>
                 </div>
 
 
