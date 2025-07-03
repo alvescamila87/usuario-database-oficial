@@ -44,7 +44,7 @@
 
     <!-- Botão Novo -->
     <div class="mb-3 text-end">
-        <a th:href="@{/cadastro-estado}" class="btn btn-success">
+        <a th:href="@{/cadastro-municicpio}" class="btn btn-success">
             Novo município
         </a>
     </div>
@@ -60,7 +60,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="estado : ${estadoListaDTO}">
+            <tr th:each="estado : ${municipioListaDTO}">
                 <td>
                     <div class="d-flex justify-content-center gap-2">
                         <a th:href="@{'/visualizar-municipio/' + ${municipio.id}}" class="btn btn-secondary">Visualizar</a>

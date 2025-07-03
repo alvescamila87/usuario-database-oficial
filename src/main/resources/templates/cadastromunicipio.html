@@ -43,27 +43,9 @@
                     </select>
                 </div>
 
-                <div class="mb-3">
-                    <label for="produto_descricao" class="form-label">Descrição</label>
-                    <textarea th:field="*{descricao}" class="form-control" id="produto_descricao" name="descricao"
-                              rows="3" placeholder="Descrição do produto"></textarea>
-                </div>
-
-                <div class="mb-3">
-                    <label for="produto_preco" class="form-label">Preço <span class="text-danger">*</span></label>
-                    <input th:field="*{preco}" type="number" step="0.01" class="form-control" id="produto_preco"
-                           name="preco" placeholder="R$ 0,00" required/>
-                </div>
-
-                <div class="mb-3">
-                    <label for="produto_quantidade" class="form-label">Quantidade em Estoque <span class="text-danger">*</span></label>
-                    <input th:field="*{quantidadeEstoque}" type="number" class="form-control" id="produto_quantidade"
-                           name="quantidadeEstoque" placeholder="0" required/>
-                </div>
-
                 <div class="text-center mt-4">
                     <button type="submit" class="btn btn-primary">Salvar</button>
-                    <a th:href="@{/lista-produto}" class="btn btn-secondary ms-2">Cancelar</a>
+                    <a th:href="@{/lista-municipio}" class="btn btn-secondary ms-2">Cancelar</a>
                 </div>
 
                 <!--                <div th:if="${param.sucesso}" class="alert alert-info" role="alert">-->
