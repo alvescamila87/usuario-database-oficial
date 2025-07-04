@@ -34,7 +34,7 @@
 
                 <div class="mb-3">
                     <label for="municipio_estado" class="form-label">Estado<span class="text-danger">*</span></label>
-                    <select class="form-select" th:field="*{categoriaId}" id="municipio_estado" name="municipio_estado" required>
+                    <select class="form-select" th:field="*{estadoId}" id="municipio_estado" name="municipio_estado" required>
                         <option value="">Selecione um estado</option>
                         <option th:each="estado : ${listaEstadoDTO}"
                                 th:value="${estado.id}"
