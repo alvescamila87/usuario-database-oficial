@@ -1,6 +1,6 @@
 package com.senai.usuario_database_oficial.controllers.municipio;
 
-import com.senai.usuario_database_oficial.dtos.estado.EstadoRequestDTO;
+import com.senai.usuario_database_oficial.dtos.estado.EstadoListaDTO;
 import com.senai.usuario_database_oficial.dtos.municipio.MunicipioDTO;
 import com.senai.usuario_database_oficial.exceptions.InvalidOperationException;
 import com.senai.usuario_database_oficial.services.EstadoService;
@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/cadastro-municipio")
 public class CadastroMunicipioController {
@@ -21,22 +23,28 @@ public class CadastroMunicipioController {
     @Autowired
     MunicipioService service;
 
+    @Autowired
+    EstadoService estadoService;
+
     @GetMapping
     public String obterCadastroMunicioio(Model model) {
         MunicipioDTO municipioDTO = new MunicipioDTO();
         model.addAttribute("municipioDTO", municipioDTO);
 
-        return "cadastroestado";
+        List<EstadoListaDTO> listaEstadoDTO = estadoService.listaEstados();
+        model.addAttribute("listaEstadoDTO", listaEstadoDTO);
+
+        return "cadastromunicipio";
     }
 
     @PostMapping
-    public String cadastrarMunicipio(@ModelAttribute("estadoRequestDTO") EstadoRequestDTO estadoRequestDTO, RedirectAttributes redirectAttributes) {
+    public String cadastrarMunicipio(@ModelAttribute("municipioDTO") MunicipioDTO municipioDTO, RedirectAttributes redirectAttributes) {
         try {
             //service.adicionarEstado(estadoRequestDTO);
-            return "redirect:/lista-estado?sucesso";
+            return "redirect:/lista-municipio?sucesso";
         } catch (InvalidOperationException exception) {
             redirectAttributes.addFlashAttribute("erro", exception.getMessage());
-            return "redirect:/cadastro-estado";
+            return "redirect:/cadastro-municipio";
         }
     }
 }

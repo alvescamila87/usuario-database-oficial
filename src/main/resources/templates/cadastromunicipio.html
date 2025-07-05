@@ -18,7 +18,7 @@
             <h5>Cadastrar município</h5>
         </div>
         <div class="card-body">
-            <form th:action="@{/cadastro-produto}" method="post" th:object="${produtoRequisicaoDto}">
+            <form th:action="@{/cadastro-municipio}" method="post" th:object="${municipioDTO}">
 
                 <!--                <div class="mb-3">-->
                 <!--                    <label for="produto_id" class="form-label">ID</label>-->
@@ -38,7 +38,8 @@
                         <option value="">Selecione um estado</option>
                         <option th:each="estado : ${listaEstadoDTO}"
                                 th:value="${estado.id}"
-                                th:text="${estado.nome}">
+                                th:value="${estado.nome}"
+                                th:value="${estado.sigla}">
                         </option>
                     </select>
                 </div>

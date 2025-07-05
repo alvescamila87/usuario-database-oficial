@@ -15,7 +15,7 @@ public class MunicipioController {
     @Autowired
     MunicipioService service;
 
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMunicipio(@PathVariable Long id) {
 
         service.deletarMunicipio(id);
