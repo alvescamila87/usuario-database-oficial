@@ -28,7 +28,7 @@ public class EstadoService {
             EstadoListaDTO estadoListaDTO = new EstadoListaDTO();
             estadoListaDTO.setId(estadoModel.getId());
             estadoListaDTO.setNome(estadoModel.getNome());
-            estadoListaDTO.setSigla(estadoListaDTO.getSigla());
+            estadoListaDTO.setSigla(estadoModel.getSigla());
 
             listaEstadosDTO.add(estadoListaDTO);
         }
@@ -47,6 +47,11 @@ public class EstadoService {
     }
 
     public void adicionarEstado(EstadoRequestDTO estadoRequestDTO) {
+
+        if(estadoRequestDTO == null) {
+            throw new InvalidOperationException("Dados obrigatórios não informados");
+        }
+
         EstadoModel estadoModel = new EstadoModel();
         estadoModel.setNome(estadoRequestDTO.getNome());
         estadoModel.setSigla(estadoRequestDTO.getSigla());
@@ -55,8 +60,6 @@ public class EstadoService {
     }
 
     public void atualizarEstado(Long id, EstadoRequestDTO estadoRequestDTO) {
-        EstadoRequestDTO atualizarEstadoDTO = new EstadoRequestDTO();
-
         Optional<EstadoModel> estadoModelOptional = repository.findById(id);
 
         if(estadoModelOptional.isEmpty()) {
@@ -68,6 +71,7 @@ public class EstadoService {
         }
 
         EstadoModel estadoModel = estadoModelOptional.get();
+        estadoModel.setId(id);
         estadoModel.setNome(estadoRequestDTO.getNome());
         estadoModel.setSigla(estadoRequestDTO.getSigla());
 
