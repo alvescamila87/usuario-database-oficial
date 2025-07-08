@@ -13,12 +13,14 @@ public class MunicipioDTO {
     private Long id;
     private String nome;
     private String uf;
+    private Long estadoId;
 
     public static MunicipioDTO of(MunicipioModel municipioModel) {
         MunicipioDTO municipioDTO = new MunicipioDTO();
         municipioDTO.setId(municipioModel.getId());
         municipioDTO.setNome(municipioModel.getNome());
         municipioDTO.setUf(municipioModel.getEstado().getSigla());
+        municipioDTO.setEstadoId(municipioDTO.getEstadoId());
 
         return municipioDTO;
     }

@@ -35,11 +35,12 @@
                 <div class="mb-3">
                     <label for="municipio_estado" class="form-label">Estado<span class="text-danger">*</span></label>
                     <select class="form-select" th:field="*{estadoId}" id="municipio_estado" name="municipio_estado" required>
-                        <option value="">Selecione um estado</option>
+                        <option value="">Selecione uma UF</option>
                         <option th:each="estado : ${listaEstadoDTO}"
                                 th:value="${estado.id}"
-                                th:value="${estado.nome}"
-                                th:value="${estado.sigla}">
+                                th:text="${estado.sigla}">
+<!--                            th:text="${estado.sigla + ' - ' + estado.nome}"-->
+
                         </option>
                     </select>
                 </div>
