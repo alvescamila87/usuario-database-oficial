@@ -65,7 +65,7 @@
                     <div class="d-flex justify-content-center gap-2">
                         <a th:href="@{'/visualizar-municipio/' + ${municipio.id}}" class="btn btn-secondary">Visualizar</a>
                         <a th:href="@{'/atualizar-municipio/' + ${municipio.id}}" class="btn btn-primary">Editar</a>
-                        <a th:data-state-id="${municipio.id}" class="delete-state btn btn-danger">Excluir</a>
+                        <a th:data-city-id="${municipio.id}" class="delete-city btn btn-danger">Excluir</a>
                     </div>
                 </td>
                 <td th:text="${municipio.id}"></td>
