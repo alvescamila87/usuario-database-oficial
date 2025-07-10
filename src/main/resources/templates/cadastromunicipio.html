@@ -28,7 +28,7 @@
                 <div class="mb-3">
                     <label for="municipio_nome" class="form-label">Município <span class="text-danger">*</span></label>
                     <input th:field="*{nome}" type="text" class="form-control" id="municipio_nome" name="municipio_nome"
-                           placeholder="Nome do produto" required/>
+                           placeholder="Nome do município" required/>
                     <!--                    <input th:field="*{nome}" type="text" class="form-control" id="municipio_nome" name="nome" placeholder="Nome do produto" required/>-->
                 </div>
 
@@ -40,7 +40,6 @@
                                 th:value="${estado.id}"
                                 th:text="${estado.sigla}">
 <!--                            th:text="${estado.sigla + ' - ' + estado.nome}"-->
-
                         </option>
                     </select>
                 </div>

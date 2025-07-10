@@ -40,7 +40,7 @@ public class CadastroMunicipioController {
     @PostMapping
     public String cadastrarMunicipio(@ModelAttribute("municipioDTO") MunicipioDTO municipioDTO, RedirectAttributes redirectAttributes) {
         try {
-            //service.adicionarEstado(estadoRequestDTO);
+            service.cadastrarMunicipio(municipioDTO);
             return "redirect:/lista-municipio?sucesso";
         } catch (InvalidOperationException exception) {
             redirectAttributes.addFlashAttribute("erro", exception.getMessage());

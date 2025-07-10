@@ -20,7 +20,7 @@ public class MunicipioDTO {
         municipioDTO.setId(municipioModel.getId());
         municipioDTO.setNome(municipioModel.getNome());
         municipioDTO.setUf(municipioModel.getEstado().getSigla());
-        municipioDTO.setEstadoId(municipioDTO.getEstadoId());
+        municipioDTO.setEstadoId(municipioModel.getId());
 
         return municipioDTO;
     }

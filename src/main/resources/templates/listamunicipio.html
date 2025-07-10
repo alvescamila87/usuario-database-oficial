@@ -60,7 +60,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="estado : ${municipioListaDTO}">
+            <tr th:each="municipio : ${municipioListaDTO}">
                 <td>
                     <div class="d-flex justify-content-center gap-2">
                         <a th:href="@{'/visualizar-municipio/' + ${municipio.id}}" class="btn btn-secondary">Visualizar</a>
