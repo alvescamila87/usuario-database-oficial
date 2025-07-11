@@ -3,6 +3,7 @@ package com.senai.usuario_database_oficial.services;
 import com.senai.usuario_database_oficial.dtos.municipio.MunicipioDTO;
 import com.senai.usuario_database_oficial.dtos.municipio.MunicipioListaDTO;
 import com.senai.usuario_database_oficial.exceptions.InvalidOperationException;
+import com.senai.usuario_database_oficial.models.EstadoModel;
 import com.senai.usuario_database_oficial.models.MunicipioModel;
 import com.senai.usuario_database_oficial.repositories.EstadoRepository;
 import com.senai.usuario_database_oficial.repositories.MunicipioRepository;
@@ -50,15 +51,24 @@ public class MunicipioService {
     }
 
     public void cadastrarMunicipio(MunicipioDTO municipioDTO) {
+
+        Optional<EstadoModel> estadoModelOptional = estadoRepository.findById(municipioDTO.getEstadoId());
+
+        if(estadoModelOptional.isEmpty()) {
+            throw new InvalidOperationException("Nenhuma UF cadastrada.");
+        }
+
         MunicipioModel municipioModel = new MunicipioModel();
         municipioModel.setNome(municipioDTO.getNome());
-        municipioModel.setEstado(municipioModel.getEstado());
+        municipioModel.setEstado(estadoModelOptional.get());
         repository.save(municipioModel);
     }
 
     public void atualizarMunicipio(Long id, MunicipioDTO municipioDTO) {
 
         Optional<MunicipioModel> municipioModelOptional = repository.findById(id);
+
+        Optional<EstadoModel> estadoModelOptional = estadoRepository.findById(municipioDTO.getEstadoId());
 
         if(municipioModelOptional.isEmpty()) {
             throw new InvalidOperationException("Município não encontrado");
@@ -68,9 +78,13 @@ public class MunicipioService {
             throw new InvalidOperationException("Município já cadastrado para essa UF.");
         }
 
+        if(estadoModelOptional.isEmpty()) {
+            throw new InvalidOperationException("Nenhuma UF cadastrada.");
+        }
+
         MunicipioModel municipioModel = municipioModelOptional.get();
         municipioModel.setNome(municipioDTO.getNome());
-        municipioModel.setEstado(municipioModel.getEstado());
+        municipioModel.setEstado(estadoModelOptional.get());
 
         repository.save(municipioModel);
     }
