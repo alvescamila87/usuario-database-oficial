@@ -2,6 +2,7 @@ package com.senai.usuario_database_oficial.controllers.commons;
 
 import com.senai.usuario_database_oficial.dtos.commons.AutenticarUsuarioDTO;
 import com.senai.usuario_database_oficial.dtos.commons.MensagemDto;
+import com.senai.usuario_database_oficial.dtos.usuario.UsuarioAuthDTO;
 import com.senai.usuario_database_oficial.dtos.usuario.UsuarioSessaoDTO;
 import com.senai.usuario_database_oficial.services.UsuarioService;
 import com.senai.usuario_database_oficial.session.ControleDeSessao;
@@ -53,5 +54,11 @@ public class UsuarioAuthController {
             return "redirect:/home?sucesso";
         }
         return "redirect:/login?erro";
+    }
+
+    @PostMapping
+    public String obterLogin (Model model) {
+        model.addAttribute("autenticarUsuarioDto", new UsuarioAuthDTO());
+        return "loginusuario";
     }
 }
