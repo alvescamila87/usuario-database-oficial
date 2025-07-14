@@ -1,8 +1,7 @@
 package com.senai.usuario_database_oficial.controllers.commons;
 
 import com.senai.usuario_database_oficial.dtos.usuario.UsuarioSessaoDTO;
-import com.senai.usuario_database_oficial.session.ControleDeSessao;
-import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,15 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     @GetMapping
-    public String obterHome(Model model, HttpServletRequest httpServletRequest){
-
-        UsuarioSessaoDTO usuarioSessaoDTO = ControleDeSessao.obter(httpServletRequest);
-
-        if(usuarioSessaoDTO.getId() == 0) {
-            return "redirect:/login";
-        }
-
-        model.addAttribute("nomeUsuario", usuarioSessaoDTO.getNome());
+    public String obterHome(@AuthenticationPrincipal UsuarioSessaoDTO usuario, Model model) {
+        model.addAttribute("nomeUsuario", usuario.getNome());
         return "home";
     }
 }
